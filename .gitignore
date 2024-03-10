@@ -1,1 +1,4 @@
 .idea
+/lab1/test
+/lab1/train
+/lab1/model.joblib
