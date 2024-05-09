@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    stages {
+        stage('Prepare scripts') {
+            steps {
+                git 'https://github.com/JokerRd/mlOps.git'
+                sh "python -m pip install certifi"
+                sh "python -m pip install ucimlrepo"
+                sh "python -m pip install scikit-learn"
+                sh "python -m pip install pandas"
+            }
+        }
+        stage('Load data') {
+            steps {
+                sh 'python lab1/data_creation.py'
+            }
+        }
+        stage('Preprocessing data') {
+            steps {
+                sh 'python lab1/model_preprocessing.py'
+            }
+        }
+        stage('Fit model') {
+            steps {
+                sh 'python lab1/model_preparation.py'
+            }
+        }
+        stage('Test model') {
+            steps {
+                sh 'python lab1/model_testing.py'
+            }
+        }
+    }
+}
