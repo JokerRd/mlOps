@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  server:
+    image: test/api_model
+    container_name: api_model
+    build: .
+    ports:
+      - "80:80"
